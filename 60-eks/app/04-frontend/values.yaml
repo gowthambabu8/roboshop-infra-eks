@@ -1,0 +1,4 @@
+deployment:
+  imageVersion: "1.4.0"
+  imageName: "happielearning/frontend"
+  domainName: "happielearning.com"

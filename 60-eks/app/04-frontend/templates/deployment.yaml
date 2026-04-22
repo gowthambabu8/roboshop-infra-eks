@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    project: roboshop
+    tier: frontend
+    component: app1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      tier: frontend
+      component: app1
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        tier: frontend
+        component: app1
+    spec:
+      containers:
+      - name: frontend
+        image: "{{ .Values.deployment.imageName }}:{{ .Values.deployment.imageVersion }}"
