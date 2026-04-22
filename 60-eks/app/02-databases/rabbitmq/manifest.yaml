@@ -13,9 +13,9 @@ metadata:
   name: rabbitmq-headless
   namespace: roboshop
   labels: 
-    - project: roboshop
-      tier: db
-      component: rabbitmq
+    project: roboshop
+    tier: db
+    component: rabbitmq
 spec:
   clusterIp: None
   selector:
@@ -34,9 +34,9 @@ metadata:
   name: rabbitmq
   namespace: roboshop
   labels: 
-    - project: roboshop
-      tier: db
-      component: rabbitmq
+    project: roboshop
+    tier: db
+    component: rabbitmq
 spec:
   selector:
     matchLabels:
@@ -79,9 +79,9 @@ metadata:
   name: rabbitmq
   namespace: roboshop
   labels: 
-    - project: roboshop
-      tier: db
-      component: rabbitmq
+    project: roboshop
+    tier: db
+    component: rabbitmq
 spec:
   selector:
     project: roboshop

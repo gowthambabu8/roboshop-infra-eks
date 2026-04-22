@@ -4,9 +4,9 @@ metadata:
   name: roboshop-headless
   namespace: roboshop
   labels: 
-    - project: roboshop
-      tier: db
-      component: mongodb
+    project: roboshop
+    tier: db
+    component: mongodb
 spec:
   clusterIp: None
   selector:
@@ -25,9 +25,9 @@ metadata:
   name: mongodb
   namespace: roboshop
   labels: 
-    - project: roboshop
-      tier: db
-      component: mongodb
+    project: roboshop
+    tier: db
+    component: mongodb
 spec:
   selector:
     matchLabels:
@@ -67,9 +67,9 @@ metadata:
   name: mongodb
   namespace: roboshop
   labels: 
-    - project: roboshop
-      tier: db
-      component: mongodb
+    project: roboshop
+    tier: db
+    component: mongodb
 spec:
   clusterIp: None
   selector:
