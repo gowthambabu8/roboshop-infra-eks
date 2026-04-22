@@ -64,7 +64,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata: 
-  name: redis-headless
+  name: redis
   namespace: roboshop
   labels: 
     project: roboshop
