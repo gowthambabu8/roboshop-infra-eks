@@ -1,0 +1,128 @@
+bastion:
+- name: bastion_internet
+  port: 22
+  src: internet
+  dest: bastion
+mongodb:
+- name: mongo_bastion
+  port: 22
+  src: bastion
+  dest: mongo
+- name: mongo_bastion
+  port: 27017
+  src: bastion
+  dest: mongo
+- name: mongo_catalogue
+  port: 27017
+  src: catalogue
+  dest: mongo
+- name: mongo_user
+  port: 27017
+  src: user
+  dest: mongo
+redis:
+- name: redis_bastion
+  port: 22
+  src: bastion
+  dest: redis
+- name: redis_bastion
+  port: 6379
+  src: bastion
+  dest: redis
+- name: redis_user
+  port: 6379
+  src: user
+  dest: redis
+- name: redis_cart
+  port: 6379
+  src: user
+  dest: redis
+mysql:
+- name: mysql_bastion
+  port: 22
+  src: bastion
+  dest: mysql
+- name: mysql_bastion
+  port: 3306
+  src: user
+  dest: mysql
+- name: mysql_shipping
+  port: 3306
+  src: user
+  dest: mysql
+rabbitmq:
+- name: rabbitmq_bastion
+  port: 22
+  src: bastion
+  dest: rabbitmq
+- name: rabbitmq_bastion
+  port: 5672
+  src: user
+  dest: rabbitmq
+- name: rabbitmq_payment
+  port: 5672
+  src: user
+  dest: rabbitmq
+catalogue:
+- name: catalogue_bastion
+  port: 22
+  src: bastion
+  dest: catalogue
+- name: catalogue_backend_alb
+  port: 8080
+  src: backend_alb
+  dest: catalogue
+user:
+- name: user_bastion
+  port: 22
+  src: bastion
+  dest: user
+- name: user_backend_alb
+  port: 8080  
+  src: backend_alb
+  dest: user
+cart:
+- name: cart_bastion
+  port: 22
+  src: bastion
+  dest: cart
+- name: cart_backend_alb
+  port: 8080  
+  src: backend_alb
+  dest: cart
+shipping:
+- name: shipping_bastion
+  port: 22
+  src: bastion
+  dest: shipping
+- name: shipping_backend_alb
+  port: 8080  
+  src: backend_alb
+  dest: shipping
+payment:
+- name: user_bastion
+  port: 22
+  src: bastion
+  dest: payment
+- name: payment_backend_alb
+  port: 8080  
+  src: backend_alb
+  dest: payment
+backend_alb:
+- name: backend_alb_frontend
+  port: 80
+  src: frontend
+  dest: backend_alb
+- name: backend_alb_bastion
+  port: 22
+  src: user
+  dest: rabbitmq
+frontend:
+- name: frontend_bastion
+  port: 22
+  src: bastion
+  dest: frontend
+- name: frontend_frontend_alb
+  port: 80
+  src: internet
+  dest: frontend

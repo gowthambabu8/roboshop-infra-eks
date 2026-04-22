@@ -1,0 +1,35 @@
+resource "aws_security_group_rule" "bastion_internet" {
+  type = "ingress"
+  from_port = local.common_port
+  to_port = local.common_port
+  protocol = "tcp"
+  cidr_blocks = [ "0.0.0.0/0" ]
+  security_group_id = local.bastion_sg_id
+}
+
+resource "aws_security_group_rule" "mongo_bastion" {
+  type = "ingress"
+  from_port = local.common_port
+  to_port = local.common_port
+  protocol = "tcp"
+  source_security_group_id = local.bastion_sg_id
+  security_group_id = local.mongo_sg_id
+}
+
+resource "aws_security_group_rule" "mongo_bastion_common" {
+  type = "ingress"
+  from_port = local.mongo_service_port
+  to_port = local.mongo_service_port
+  protocol = "tcp"
+  source_security_group_id = local.bastion_sg_id
+  security_group_id = local.mongo_sg_id
+}
+
+resource "aws_vpc_security_group_egress_rule" "example" {
+  count = length(local.sg_id_list)
+  security_group_id = local.sg_id_list[count.index]
+  cidr_ipv4   = "0.0.0.0/0"
+  from_port   = -1
+  ip_protocol = "All"
+  to_port     = -1
+}
