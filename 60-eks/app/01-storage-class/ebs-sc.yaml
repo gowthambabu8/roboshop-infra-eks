@@ -1,4 +1,4 @@
-apiVersion: kubernetes.k8.io/v1
+apiVersion: storage.k8.io/v1
 kind: StorageClass
 metadata:
   name: roboshop-ebs
