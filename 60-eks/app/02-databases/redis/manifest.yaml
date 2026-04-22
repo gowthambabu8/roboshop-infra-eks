@@ -67,9 +67,9 @@ metadata:
   name: redis-headless
   namespace: roboshop
   labels: 
-    - project: roboshop
-      tier: db
-      component: redis
+    project: roboshop
+    tier: db
+    component: redis
 spec:
   selector:
     project: roboshop
