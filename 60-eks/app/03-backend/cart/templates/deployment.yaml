@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: cart
-          image: " {{ .Values.deployment.imageName }}:{{ .Values.deployment.imageVersion }}"
+          image: "{{ .Values.deployment.imageName }}:{{ .Values.deployment.imageVersion }}"
           imagePullPolicy: Always # safe to pull everytime. There may images which are fixed and pushed with same build version
           resources:
             requests:
