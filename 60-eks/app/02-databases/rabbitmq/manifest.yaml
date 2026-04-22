@@ -54,7 +54,7 @@ spec:
     spec:
       containers:
         - name: rabbitmq
-          image: happielearning/rabbitmq:7
+          image: rabbitmq:3
           envFrom:
             - secretRef:
                 name: rabbitmq-secret
