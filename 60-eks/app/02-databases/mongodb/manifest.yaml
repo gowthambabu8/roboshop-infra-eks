@@ -45,7 +45,7 @@ spec:
     spec:
       containers:
         - name: mongodb
-          image: happielearning/mongodb:1.0.0
+          image: happielearning/mongo:1.0.0
           volumeMounts:
             - name: mongodb
               mountPath: /data/db
