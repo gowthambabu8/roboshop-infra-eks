@@ -6,20 +6,20 @@ metadata:
   labels:
     project: roboshop
     tier: frontend
-    component: app1
+    component: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
       project: roboshop
       tier: frontend
-      component: app1
+      component: frontend
   template:
     metadata:
       labels:
         project: roboshop
         tier: frontend
-        component: app1
+        component: frontend
     spec:
       containers:
       - name: frontend
