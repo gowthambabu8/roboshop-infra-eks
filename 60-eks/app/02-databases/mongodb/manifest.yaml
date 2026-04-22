@@ -8,7 +8,7 @@ metadata:
     tier: db
     component: mongodb
 spec:
-  clusterIp: None
+  clusterIP: None
   selector:
     project: roboshop
     tier: db
@@ -35,7 +35,7 @@ spec:
       tier: db
       component: mongodb
   serviceName: "mongodb-headless"
-  replicas: "1"
+  replicas: 1
   template:
     metadata:
       labels:

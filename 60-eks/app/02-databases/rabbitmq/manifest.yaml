@@ -17,7 +17,7 @@ metadata:
     tier: db
     component: rabbitmq
 spec:
-  clusterIp: None
+  clusterIP: None
   selector:
     project: roboshop
     tier: db

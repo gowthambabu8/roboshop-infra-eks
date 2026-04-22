@@ -8,7 +8,7 @@ metadata:
     tier: db
     component: redis
 spec:
-  clusterIp: None
+  clusterIP: None
   selector:
     project: roboshop
     tier: db
