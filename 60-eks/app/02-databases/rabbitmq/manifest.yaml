@@ -44,7 +44,7 @@ spec:
       tier: db
       component: rabbitmq
   serviceName: "rabbitmq-headless"
-  replicas: "1"
+  replicas: 1
   template:
     metadata:
       labels:
