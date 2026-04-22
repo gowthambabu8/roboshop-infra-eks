@@ -71,7 +71,6 @@ metadata:
     tier: db
     component: mongodb
 spec:
-  clusterIp: None
   selector:
     project: roboshop
     tier: db
