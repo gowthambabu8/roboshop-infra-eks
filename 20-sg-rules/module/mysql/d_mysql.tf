@@ -15,3 +15,12 @@ resource "aws_security_group_rule" "mysql_bastion_common" {
   source_security_group_id = local.bastion_sg_id
   security_group_id = local.mysql_sg_id
 } 
+
+resource "aws_security_group_rule" "mysql_eks_node" {
+  type = "ingress"
+  from_port = local.mysql_service_port
+  to_port = local.mysql_service_port
+  protocol = "tcp"
+  source_security_group_id = local.eks_node_sg_id
+  security_group_id = local.mysql_sg_id
+}

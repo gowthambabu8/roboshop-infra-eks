@@ -18,3 +18,7 @@ data "aws_ssm_parameter" "rabbitmq_sg_id" {
 data "aws_ssm_parameter" "mongo_sg_id" {
   name = "/${var.project}/${var.environment}/mongo_sg_id"
 }
+
+data "aws_ssm_parameter" "eks_node_sg_id" {
+  name = "/${var.project}/${var.environment}/eks_node_sg_id"
+}
