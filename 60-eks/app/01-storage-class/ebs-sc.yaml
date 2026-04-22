@@ -1,0 +1,11 @@
+apiVersion: kubernetes.k82.io/v1
+kind: StorageClass
+metadata:
+  name: roboshop-ebs
+  labels:
+    - project: roboshop
+      environment: dev
+      purpose: poc
+provisioner: ebs.csi.aws.com
+volumeBindingMode: WaitForFirstConsumer
+reclaimPolicy: Retain
