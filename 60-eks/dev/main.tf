@@ -15,9 +15,9 @@ module "eks" {
             kubernetes_version = var.eks_nodegroup_blue_version
             instance_types = ["t3.medium"]
             capacity_type = "ON_DEMAND"
-            min_size = "1"
+            min_size = "2"
             max_size = "3"
-            desired_size = "1"
+            desired_size = "2"
             labels = { nodegroup = "blue"}
             iam_role_additional_policies = {
                 amazonEBS = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
