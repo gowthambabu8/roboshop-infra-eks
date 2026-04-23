@@ -1,0 +1,30 @@
+apiVersion: gateway.k8s.aws/v1beta
+kind: TargetGroupConfiguration
+metadata:
+  name: frontend-tgconfig
+  namespace: roboshop
+spec: 
+  targetReference:
+    name: frontend
+    kind: Service
+  defaultConfiguration:
+    targetType: ip
+---
+apiVersion: gateway.networking.kubernetes.io/v1
+kind: HTTPRoute
+metadata:
+  name: roboshop-http-route
+  namespace: roboshop
+spec:
+  parentRefs:
+    - name: roboshop-gateway
+      sectionName: https
+  hostnames: "roboshop-dev.happielearning.com"
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: frontend
+      port: 80

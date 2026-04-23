@@ -1,0 +1,29 @@
+apiVersion: gateway.networking.kubernetes.io/v1
+kind: Gateway
+metadata:
+  name: roboshopp-gateway
+  namespace: roboshop
+spec:
+  gatewayClassName: roboshop-gateway-alb
+  infrastructure:
+    parametersRef:
+      group: gateway.k8s.aws
+      kind: LoadBalancerConfiguration
+      name: roboshop-lb-config
+  listeners:
+    - name: http
+      port: 80
+      protocol: HTTP
+      allowedRoutes:
+        namespaces:
+          from: Same
+    - name: https
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: Same
+      tls:
+        mode: Terminate
+        options: 
+           gateway.k8s.aws/certificate-arn: arn:aws:acm:us-east-1:007670671403:certificate/c247eb1b-cf6c-48ee-860c-400b9692c599

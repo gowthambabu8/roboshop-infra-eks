@@ -1,0 +1,7 @@
+apiVersion: gateway.networking.kubernetes.io/v1
+kind: GatewayClass
+metadata: 
+  name: roboshop-gateway-alb
+spec:
+  controllerName: gateway.k8s.aws/alb
+
