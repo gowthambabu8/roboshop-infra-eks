@@ -4,5 +4,5 @@ metadata:
   name: roboshop-lb-config
   namespace: roboshop
 spec:
-  schema: internet-facing
+  scheme: internet-facing
   ipAddressType: ipv4
