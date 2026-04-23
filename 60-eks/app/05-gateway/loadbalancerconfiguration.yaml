@@ -1,4 +1,4 @@
-apiVersion: gateway.k8s.aws/v1beta
+apiVersion: gateway.k8s.aws/v1beta1
 kind: LoadBalancerConfiguration
 metadata:
   name: roboshop-lb-config
