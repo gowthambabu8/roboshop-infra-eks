@@ -38,7 +38,15 @@ jobs:
     needs: sg
     uses: ./.github/workflows/terraform-reusable.yaml
     with:
-      service-name: vpc
+      service-name: sg-rules
       working-directory: ./20-sg-rules/dev/
     secrets: inherit
-    
+  
+  bastion:
+    name: Bastion
+    needs: sg-rules
+    uses: ./.github/workflows/terraform-reusable.yaml
+    with:
+      service-name: vpc
+      working-directory: ./30-bastion/dev/
+    secrets: inherit
