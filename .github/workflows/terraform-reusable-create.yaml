@@ -1,4 +1,4 @@
-name: Terraform reusable code
+name: Terraform reusable code for Create
 on:
   workflow_call:
     inputs:
