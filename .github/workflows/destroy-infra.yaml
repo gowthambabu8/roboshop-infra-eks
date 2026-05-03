@@ -16,6 +16,62 @@ env:
   TF_VERSION: 1.15.1
 
 jobs:
+  sg-rules:
+    name: SG Rules
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./20-sg-rules/dev/
+    steps:
+      - name: "Code checkout"
+        uses: actions/checkout@v4
+      
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+      
+      - name: Terraform init
+        run: terraform init --backend-config=backend-dev.hcl
+
+      - name: terraform destroy 
+        run: terraform destroy --var-file=dev.tfvars --auto-approve
+  
+  sg:
+    name: SG
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./10-sg/dev/
+    steps:
+      - name: "Code checkout"
+        uses: actions/checkout@v4
+      
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+      
+      - name: Terraform init
+        run: terraform init --backend-config=backend-dev.hcl
+
+      - name: terraform destroy 
+        run: terraform destroy --var-file=dev.tfvars --auto-approve
+  
   vpc:
     name: Deploy VPC
     runs-on: ubuntu-latest
