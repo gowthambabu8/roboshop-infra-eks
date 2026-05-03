@@ -47,6 +47,7 @@ jobs:
   sg:
     name: SG
     runs-on: ubuntu-latest
+    needs: sg-rules
     defaults:
       run:
         working-directory: ./10-sg/dev/
@@ -75,6 +76,7 @@ jobs:
   vpc:
     name: Deploy VPC
     runs-on: ubuntu-latest
+    needs: sg
     defaults:
       run:
         working-directory: ./00-vpc/dev/
