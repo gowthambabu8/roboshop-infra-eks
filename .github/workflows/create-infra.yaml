@@ -18,7 +18,7 @@ env:
 jobs:
   vpc:
     name: VPC
-    uses: ./.github/workflows/terraform-reusable.yaml
+    uses: ./.github/workflows/terraform-reusable-create.yaml
     with:
       service-name: vpc
       working-directory: ./00-vpc/dev/
@@ -27,7 +27,7 @@ jobs:
   sg:
     name: SG
     needs: vpc
-    uses: ./.github/workflows/terraform-reusable.yaml
+    uses: ./.github/workflows/terraform-reusable-create.yaml
     with:
       service-name: sg
       working-directory: ./10-sg/dev/
@@ -36,7 +36,7 @@ jobs:
   sg-rules:
     name: SG Rules
     needs: sg
-    uses: ./.github/workflows/terraform-reusable.yaml
+    uses: ./.github/workflows/terraform-reusable-create.yaml
     with:
       service-name: sg-rules
       working-directory: ./20-sg-rules/dev/
@@ -45,7 +45,7 @@ jobs:
   bastion:
     name: Bastion
     needs: sg-rules
-    uses: ./.github/workflows/terraform-reusable.yaml
+    uses: ./.github/workflows/terraform-reusable-create.yaml
     with:
       service-name: vpc
       working-directory: ./30-bastion/dev/
