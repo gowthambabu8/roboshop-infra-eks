@@ -24,7 +24,7 @@ on:
         required: true
   
 jobs:
-  vpc:
+  destroy:
     name: ${{ inputs.service-name }}
     runs-on: ubuntu-latest
     defaults:

@@ -20,7 +20,7 @@ jobs:
     name: Bastion
     uses: ./.github/workflows/terraform-reusable-destroy.yaml
     with:
-      service-name: vpc
+      service-name: bastion
       working-directory: ./30-bastion/dev/
     secrets: inherit
     
