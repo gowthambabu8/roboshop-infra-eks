@@ -13,7 +13,7 @@ on:
           - "prod"
 env:
   AWS_REGION: ${{ secrets.AWS_REGION }}
-  TF_VERSION: 1.7.0
+  TF_VERSION: 1.15.1
 
 jobs:
   vpc:
