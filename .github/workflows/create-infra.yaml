@@ -57,5 +57,5 @@ jobs:
     uses: ./.github/workflows/terraform-reusable-create.yaml
     with:
       service-name: rds
-      working-directory: ./40-rds/dev/
+      working-directory: ./40-rds/
     secrets: inherit
