@@ -1,4 +1,4 @@
-name: Roboshop Infra AWS - Create
+name: Roboshop Infra AWS - Destroy
 on:
   workflow_dispatch:
     inputs:
@@ -18,7 +18,6 @@ env:
 jobs:
   bastion:
     name: Bastion
-    needs: sg-rules
     uses: ./.github/workflows/terraform-reusable-destroy.yaml
     with:
       service-name: vpc
@@ -27,7 +26,7 @@ jobs:
     
   sg-rules:
     name: SG Rules
-    needs: sg
+    needs: bastion
     uses: ./.github/workflows/terraform-reusable-destroy.yaml
     with:
       service-name: sg-rules
@@ -36,7 +35,7 @@ jobs:
 
   sg:
     name: SG
-    needs: vpc
+    needs: sg-rules
     uses: ./.github/workflows/terraform-reusable-destroy.yaml
     with:
       service-name: sg
@@ -45,6 +44,7 @@ jobs:
   
   vpc:
     name: VPC
+    needs: sg
     uses: ./.github/workflows/terraform-reusable-destroy.yaml
     with:
       service-name: vpc
