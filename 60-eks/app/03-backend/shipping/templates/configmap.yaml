@@ -9,4 +9,4 @@ metadata:
     component: shipping
 data:
   CART_ENDPOINT: cart:8080
-  DB_HOST: roboshop-dev.c0jqouioew0k.us-east-1.rds.amazonaws.com
+  DB_HOST: {{ .Values.configMap.DB_HOST }}

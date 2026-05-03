@@ -8,3 +8,5 @@ deployment:
   limits:
     cpu: "200m"
     memory: "250Mi"
+configMap:
+  DB_HOST: "roboshop-dev.c0jqouioew0k.us-east-1.rds.amazonaws.com"

@@ -30,6 +30,12 @@ module "db" {
   # Database Deletion Protection
   deletion_protection = false
 
+  # Deletion-related settings
+  skip_final_snapshot      = true   # No final snapshot on destroy
+  delete_automated_backups = true   # Delete automated backups on destroy
+  backup_retention_period  = 0      # Disable automated backups entirely (dev only)
+  copy_tags_to_snapshot    = false
+
   parameters = [
     {
       name  = "character_set_client"
@@ -64,4 +70,6 @@ module "db" {
         Name = "${var.project}-${var.environment}-mysql"
     }
   )
+
+  
 }

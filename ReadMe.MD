@@ -54,3 +54,49 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
   --set serviceAccount.create=false \
   --set serviceAccount.name=aws-load-balancer-controller
 ```
+
+Gateway Setup
+Delete ingress API
+```
+kubectl delete ingress frontend -n roboshop
+```
+Uninstall aws load balancer controller
+```
+helm uninstall aws-load-balancer-controller -n kube-system
+```
+Install Gateway API CRD's
+```
+# Must be v1.5.0 — earlier versions missing TLSRoute v1 which LBC v3.x requires
+kubectl apply --server-side=true \
+  -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.5.0/standard-install.yaml
+
+# Verify — should see 8+ CRDs
+kubectl get crd | grep gateway
+```
+
+Install aws load balancer controller for Gateway API
+```
+VPC_ID=$(aws ssm get-parameter --name /roboshop/dev/vpc_id \
+  --region us-east-1 --query Parameter.Value --output text)
+
+helm upgrade --install aws-load-balancer-controller eks/aws-load-balancer-controller \
+  -n kube-system \
+  --set clusterName=roboshop-dev \
+  --set serviceAccount.create=false \
+  --set serviceAccount.name=aws-load-balancer-controller \
+  --set region=us-east-1 \
+  --set vpcId=$VPC_ID \
+  --set controllerConfig.featureGates.ALBGatewayAPI=true \
+  --set controllerConfig.featureGates.NLBGatewayAPI=true
+
+kubectl rollout status deployment aws-load-balancer-controller -n kube-system
+kubectl get pods -n kube-system | grep aws-load-balancer
+```
+
+Execute gateway api configs
+```
+gatewayclass
+loadbalancerconfig
+gateway
+frontend
+```
