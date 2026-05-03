@@ -12,7 +12,7 @@ on:
         type: string
       terraform_version:
         description: "terraform version"
-        required: true
+        required: false
         default: "1.15.1"
         type: string
     secrets:
