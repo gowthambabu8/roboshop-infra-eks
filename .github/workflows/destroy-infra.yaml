@@ -18,7 +18,7 @@ env:
 jobs:
   rds:
     name: rds
-    uses: ./.github/workflows/terraform-reusable-create.yaml
+    uses: ./.github/workflows/terraform-reusable-destroy.yaml
     with:
       service-name: rds
       working-directory: ./40-rds/dev/
