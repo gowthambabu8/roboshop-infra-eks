@@ -26,6 +26,7 @@ jobs:
     
   sg:
     name: SG
+    needs: vpc
     uses: ./.github/workflows/terraform-reusable.yaml
     with:
       service-name: sg
@@ -34,6 +35,7 @@ jobs:
     
   sg-rules:
     name: SG Rules
+    needs: sg
     uses: ./.github/workflows/terraform-reusable.yaml
     with:
       service-name: vpc
