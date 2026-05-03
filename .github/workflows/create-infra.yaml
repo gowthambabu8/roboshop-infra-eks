@@ -48,7 +48,7 @@ jobs:
         run: terraform plan --var-file=dev.tfvars -out=tfplan
 
       - name: terraform apply 
-        run: terraform apply tfplan --auto-approve
+        run: terraform apply -auto-approve tfplan
   
   sg:
     name: SG
@@ -83,7 +83,7 @@ jobs:
         run: terraform plan --var-file=dev.tfvars -out=tfplan
 
       - name: terraform apply 
-        run: terraform apply tfplan --auto-approve
+        run: terraform apply -auto-approve tfplan
   
   sg-rules:
     name: SG Rules
@@ -118,4 +118,4 @@ jobs:
         run: terraform plan --var-file=dev.tfvars -out=tfplan
 
       - name: terraform apply 
-        run: terraform apply tfplan --auto-approve
+        run: terraform apply -auto-approve tfplan
