@@ -31,31 +31,35 @@ jobs:
     with:
       service-name: sg
       working-directory: ./10-sg/dev/
+      working-dir-test: "TESTING"
     secrets: inherit
     
-  sg-rules:
-    name: SG Rules
-    needs: sg
-    uses: ./.github/workflows/terraform-reusable-create.yaml
-    with:
-      service-name: sg-rules
-      working-directory: ./20-sg-rules/dev/
-    secrets: inherit
+  # sg-rules:
+  #   name: SG Rules
+  #   needs: sg
+  #   uses: ./.github/workflows/terraform-reusable-create.yaml
+  #   with:
+  #     service-name: sg-rules
+  #     working-directory: ./20-sg-rules/dev/
+  #     working-dir-test: "TESTING"
+  #   secrets: inherit
   
-  bastion:
-    name: Bastion
-    needs: sg-rules
-    uses: ./.github/workflows/terraform-reusable-create.yaml
-    with:
-      service-name: bastion
-      working-directory: ./30-bastion/dev/
-    secrets: inherit
+  # bastion:
+  #   name: Bastion
+  #   needs: sg-rules
+  #   uses: ./.github/workflows/terraform-reusable-create.yaml
+  #   with:
+  #     service-name: bastion
+  #     working-directory: ./30-bastion/dev/
+  #     working-dir-test: "TESTING"
+  #   secrets: inherit
   
-  rds:
-    name: rds
-    needs: bastion
-    uses: ./.github/workflows/terraform-reusable-create.yaml
-    with:
-      service-name: rds
-      working-directory: ./40-rds/dev/
-    secrets: inherit
+  # rds:
+  #   name: rds
+  #   needs: bastion
+  #   uses: ./.github/workflows/terraform-reusable-create.yaml
+  #   with:
+  #     service-name: rds
+  #     working-directory: ./40-rds/dev/
+  #     working-dir-test: "TESTING"
+  #   secrets: inherit
